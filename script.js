@@ -113,6 +113,12 @@ function stopRecording() {
         stopBtn.disabled = true;
         visualizer.classList.remove('recording');
         statusIndicator.textContent = "Processing...";
+
+        // Trigger vertical flip to reveal Panel 4
+        const flipper = document.getElementById('panel2Flipper');
+        if (flipper) {
+            flipper.classList.add('flipped');
+        }
     }
 }
 

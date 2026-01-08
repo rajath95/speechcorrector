@@ -115,6 +115,10 @@ h1 {
     border-color: rgba(16, 185, 129, 0.4);
 }
 
+.back.panel:hover {
+    transform: rotateX(180deg) translateY(8px);
+}
+
 .panel h2 {
     color: var(--text-secondary);
     margin-top: 0;
