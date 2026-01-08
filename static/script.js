@@ -9,6 +9,7 @@ const stopBtn = document.getElementById('stopBtn');
 const visualizer = document.getElementById('visualizer');
 const statusIndicator = document.getElementById('statusIndicator');
 const timerDisplay = document.getElementById('timerDisplay');
+const sampleAnswerDisplay = document.getElementById('sampleAnswerDisplay');
 
 // Results Elements
 const transcriptText = document.getElementById('transcriptText');
@@ -52,14 +53,27 @@ function initializeGemini(key) {
 async function generateTopic() {
     if (!model) return alert("Please set your API Key first.");
 
+    // Flip back to front if it was flipped
+    const flipper = document.getElementById('panel2Flipper');
+    if (flipper) {
+        flipper.classList.remove('flipped');
+    }
+
     topicDisplay.textContent = "Generating topic...";
+    sampleAnswerDisplay.textContent = "Generating sample answer...";
     newTopicBtn.disabled = true;
 
     try {
-        const prompt = "Generate a random, engaging French conversation topic or debate question for a language learner. Reply with ONLY the topic in French.";
+        const prompt = "Generate a random, engaging French conversation topic or debate question for a language learner. Also, provide a sample answer at French B2 level for this topic. The sample answer MUST be structured into exactly 3 paragraphs: 1. Introduction, 2. Main argument/Body, 3. Conclusion. Return a JSON object with this exact structure (no markdown formatting, just raw JSON): {\"topic\": \"The topic in French\", \"sampleAnswer\": \"The sample answer in French at B2 level with paragraphs separated by double newlines\"}";
         const result = await model.generateContent(prompt);
-        const response = await result.response;
-        topicDisplay.textContent = response.text();
+        const responseText = result.response.text();
+        
+        // Clean markdown code blocks if present
+        const cleanJson = responseText.replace(/```json|```/g, '').trim();
+        const data = JSON.parse(cleanJson);
+        
+        topicDisplay.textContent = data.topic;
+        sampleAnswerDisplay.textContent = data.sampleAnswer;
     } catch (error) {
         console.error("Topic error:", error);
         topicDisplay.textContent = `Error: ${error.message || error.toString()}`;

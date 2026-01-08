@@ -145,6 +145,20 @@ h1 {
     color: var(--text-primary);
 }
 
+#sampleAnswerDisplay {
+    font-family: "Bookman Old Style", "URW Bookman L", "Bookman", serif;
+    font-size: 1.2rem;
+    text-align: left;
+    display: block;
+    overflow-y: auto;
+    max-height: 300px;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md);
+    margin: 1rem 0;
+    white-space: pre-wrap;
+}
+
 /* Panel 2: Practice */
 .visualizer-container {
     margin: 2rem 0;
