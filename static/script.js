@@ -1,5 +1,5 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import { GEMINI_API_KEY } from "./config.js";
+import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+import { GEMINI_API_KEY } from "/config.js"; // Point to your Flask route
 
 // DOM Elements
 const newTopicBtn = document.getElementById('newTopicBtn');
