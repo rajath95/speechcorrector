@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Corrector</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>French Speech Corrector</h1>
+    </header>
+
+    <main class="container">
+        <!-- Panel 1: Topic Generator -->
+        <section class="panel topic-panel">
+            <h2>1. Topic</h2>
+            <div id="topicDisplay" class="display-area">
+                Click "New Topic" to start...
+            </div>
+            <button id="newTopicBtn" class="primary-btn">New Topic</button>
+        </section>
+
+        <!-- Panel 2: Voice Recorder (Flippable) -->
+        <div class="flip-container">
+            <div class="flipper" id="panel2Flipper">
+                <!-- Front: Recorder -->
+                <section class="panel record-panel front">
+                    <h2>2. Practice</h2>
+                    <div class="visualizer-container">
+                        <div id="visualizer" class="visualizer"></div>
+                        <p id="statusIndicator">Ready</p>
+                        <div id="timerDisplay" class="timer">04:30</div>
+                    </div>
+                    <div class="controls">
+                        <button id="recordBtn" class="record-btn">Record</button>
+                        <button id="stopBtn" class="stop-btn" disabled>Stop</button>
+                    </div>
+                </section>
+                
+                <!-- Back: Panel 4 -->
+                <section class="panel panel-4 back">
+                    <h2>4. Processing</h2>
+                    <div class="display-area empty-content">
+                        <!-- Empty content as requested -->
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Panel 3: Feedback & Analysis -->
+        <section class="panel feedback-panel">
+            <h2>3. Feedback</h2>
+            <div class="results-container">
+                <div class="result-item">
+                    <h3>Transcript</h3>
+                    <p id="transcriptText">Waiting for input...</p>
+                </div>
+                <div class="result-item">
+                    <h3>Correction</h3>
+                    <p id="correctionText">---</p>
+                </div>
+                <div class="result-item">
+                    <h3>Score</h3>
+                    <div id="scoreDisplay" class="score">-/10</div>
+                </div>
+                <div class="result-item">
+                    <h3>Details</h3>
+                    <p id="feedbackDetails">---</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        Product of Cento Corp ©
+    </footer>
+    <script type="module" src="script.js?v=3"></script>
+</body>
+
+</html>
