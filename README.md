@@ -2,11 +2,11 @@
 
 ###  Language Correction App
 
-It helps improve your language speaking skills 
+An application which helps improve your language speaking skills 
 
 
 ![App](image.png)
 
-Left Panel = generates a topic 
+Left Panel => generates a topic 
 
-Right Panel = gives you a score and a feedback 
+Right Panel => gives you a score and a feedback 
